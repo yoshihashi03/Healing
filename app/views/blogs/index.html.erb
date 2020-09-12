@@ -1,0 +1,34 @@
+<div class="form-box">
+<div class="container">
+<div class="row">
+	<div class="col-xs-3">
+
+		<%#= render 'search', blog: @blog %>
+
+	</div>
+
+	<div class="col-xs-9">
+
+		<h2>投稿一覧</h2>
+			<div class="blog-index-newbt"><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-success' %></div>
+
+
+	    <div class="flex-blog">
+	      <% @blogs.each do |blog| %>
+		      <div class="flex-blog-content">
+		      	<%= link_to blog_path(blog) do %>
+			        <%= image_tag blog.photos[0].to_s, size: "100x100", fallback: "no-image.png" %>
+			        <div class="index-blog-title"><%= blog.title %></div>
+			        <div class="index-blog-address"><%= blog.address %></div>
+			    <% end %>
+		      </div>
+	      <% end %>
+	    </div>
+
+
+	</div>
+
+</div>
+</div>
+</div>
+

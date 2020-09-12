@@ -1,0 +1,54 @@
+// Place all the styles related to the blogs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.blog-photo-show {
+  	width: 60%;
+  	height: 100px;
+}
+
+.blog-show-content-title {
+	color: #008080;
+}
+
+.blog-show-content {
+	font-size: 20px;
+}
+
+.blog-show-flexbox {
+	display: flex;
+	word-break: break-word;
+	flex-wrap: wrap;
+	font-size: 15px;
+	width: 100%;
+}
+
+.blog-show-flex {
+	text-align: left;
+	width: 100%;
+}
+
+.flex-blog {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	margin-top: 20px;
+}
+
+.flex-blog-content {
+	margin: 10px;
+	width: 200px;
+}
+
+.index-blog-title {
+	font-size: 15px;
+}
+
+
+.blog-show-comment {
+	width: 100%;
+}
+
+.comment-deletebt {
+	color: red;
+}

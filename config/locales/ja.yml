@@ -1,0 +1,27 @@
+ja:
+  activerecord:
+    models:
+      customer: 会員
+      blog: 投稿
+    attributes:
+      blog:
+        title: 店名
+        body: 説明
+        genre: 種類
+        address: 住所
+        photos: 写真
+      customer:
+        name: 名前
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      blog_comment:
+        comment: コメント
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."

@@ -1,0 +1,121 @@
+<div class="form-box">
+<div class="container">
+<div class="row">
+
+	<div class="col-xs-6 text-center">
+		<%# @blog.photos.each do |photo| %>
+    			<%#= image_tag photo.url, class: "blog-photo-show" %>
+		<%# end %>
+
+	<!-- <div class="bxslider"> -->
+	  <%# @blog.photos.each do |photo| %>
+	        <%#= image_tag photo.url, class: "blog-photo-show" %>
+	  <%# end %>
+	<!-- </div> -->
+
+	<div class="a">
+	    <div class="b">
+	    	<% @blog.photos.each do |photo| %>
+    			<%= image_tag photo.url, class: "blog-photo-show" %>
+			<% end %>
+	    </div>
+	</div>
+
+	<div>
+
+		<table class="table">
+			<tr>
+					<!-- いいね機能 -->
+	          <td>
+	            <% if @blog.favorited_by?(current_customer) %>
+	              <%= link_to blog_favorites_path(@blog), method: :delete do %>
+	                <i class="fa fa-heart" aria-hidden="true" style="color: red;"><%= @blog.favorites.count%></i>
+	              <% end %>
+	            <% else %>
+	              <%= link_to blog_favorites_path(@blog), method: :post do %>
+	                <i class="fa fa-heart-o" aria-hidden="true"><%= @blog.favorites.count %></i>
+	              <% end %>
+	            <% end %>
+	          </td>
+					<!-- いいね機能 -->
+				<td>コメント数：<%= @blog.blog_comments.count %></td>
+
+			</tr>
+		</table>
+			<!-- コメント一覧 -->
+		<table>
+	      <% @blog_comments.each do |blog_comment| %>
+	        <tr class="blog-show-flexbox">
+	          <td class="blog-show-comment-customer">
+	            <%= link_to customer_path(blog_comment.customer), class: "customer_#{blog_comment.customer.id}" do %>
+	              <%= attachment_image_tag blog_comment.customer, :profile_image, size: "30x30", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash",class: "profile-image-style" %>
+	              <%= blog_comment.customer.name %>
+	            <% end %>
+	          </td>
+	          <td class="blog-show-flex blog-show-comment">
+	          	<%= blog_comment.comment %>
+	          </td>
+	          <% if current_customer == blog_comment.customer %>
+	            <td><%= link_to '', blog_blog_comment_path(@blog, blog_comment), class: 'glyphicon glyphicon-trash comment-deletebt', method: :delete %></td>
+	          <% end %>
+	        </tr>
+	      <% end %>
+	    </table>
+	    <%= paginate @blog_comments %>
+
+	</div>
+
+
+	</div>
+
+	<div class="col-xs-6">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+		<h2 class="panel-title"><%= @blog.title %></h2>
+      </div>
+
+      <div class="panel-body">
+      	<table class="table">
+	      		<tr class="blog-show-flexbox">
+			    	<th class="blog-show-content-title">説明</th>
+			    	<th class="blog-show-flex"><%= @blog.body %></th>
+			    </tr>
+
+		    <tr>
+		    	<th class="blog-show-content-title">種類</th>
+		    	<th class="blog-show-content"><%= @blog.genre %></th>
+		    </tr>
+
+		    <tr>
+		    	<th class="blog-show-content-title">住所</th>
+		    	<th class="blog-show-content"><%= @blog.address %></th>
+		    </tr>
+
+		    <tr>
+		    	<th class="blog-show-content-title">URL</th>
+		    	<th class="blog-show-content"><%= @blog.url_content %></th>
+		    </tr>
+
+		    <tr>
+		    	<% if @blog.customer == current_customer %>
+	      			<th><%= link_to "編集", edit_blog_path(@blog.id), class: "btn btn-success" %></th>
+	      			<th><%= link_to "削除", blog_path, class: 'btn btn-danger', method: :delete %></th>
+      			<% end %>
+			</tr>
+      	</table>
+
+      </div>
+
+     </div>
+
+
+     <div class="comment-form">コメント記入欄(20字以内)
+	      	<%= form_for [@blog, @blog_comment] do |f| %>
+    	    	<%= f.text_area :comment, size: "30x4" %>
+        		<%= f.submit 'コメント投稿', class: "btn btn-info" %>
+      		<% end %>
+    	</div>
+   </div>
+</div>
+</div>
+</div>

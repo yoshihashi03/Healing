@@ -1,0 +1,22 @@
+<div class="form-box">
+<div class="container">
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+  <table class='table'>
+    <tbody>
+      <% @customers.each do |customer| %>
+      <% if customer.is_deleted == false %>
+        <tr>
+          <td><%= attachment_image_tag customer, :profile_image, size: "60x60", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash",class: "profile-image-style" %></td>
+          <td class="name-style"><%= customer.name %></td>
+          <td class="name-style"><%= link_to '詳細', customer, class: "customer_#{customer.id}" %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+</table>
+
+</div>
+</div>
+</div>

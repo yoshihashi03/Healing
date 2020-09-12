@@ -1,0 +1,56 @@
+<div class="form-box">
+<div class="container">
+<div class="row">
+
+  <div class="col-md-6 col-md-offset-3 text-center">
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+      <h2 class="panel-title">新規登録</h2>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+            <div class="field">
+              <div class="panel-body">
+                <%= f.label :name, "名前" %><br>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="panel-body">
+                <%= f.label :email, "メールアドレス" %><br>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="panel-body">
+                <%= f.label :password, "パスワード" %><br>
+                  <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> 文字以上)</em>
+                  <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password" %>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="panel-body">
+                <%= f.label :password_confirmation, "パスワード確認" %><br>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              </div>
+            </div>
+
+            <div class="actions">
+              <div class="panel-body"><%= f.submit "登録" %></div>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
