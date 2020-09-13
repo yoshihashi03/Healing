@@ -26,9 +26,9 @@ class CustomersController < ApplicationController
     end
   end
 
-  # def withdrawal
-  #   # @customer = Customer.find(params[:id])
-  # end
+  def favorite
+     @customer = current_customer
+  end
 
   def hide
     @customer = Customer.find(current_customer.id)

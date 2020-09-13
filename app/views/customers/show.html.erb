@@ -16,11 +16,12 @@
 
          	<div class="field">
 		        <div class="panel-body">
-		        	<%= link_to "編集", edit_customer_path(@customer.id), class: "btn btn-defaults" %>
+		        	<%= link_to "編集", edit_customer_path(@customer.id), class: "btn btn-info" %>
 		        </div>
 		    </div>
        </div>
      </div>
+     <div><%= link_to "お気に入り", customers_favorite_path, class: "btn btn-primary" %></div>
    </div>
 
 

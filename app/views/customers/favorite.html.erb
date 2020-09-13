@@ -1,0 +1,13 @@
+<h3>お気に入り</h3>
+	<div class="flex-blog">
+		<% @customer.blog.favorites.each do |blog| %>
+		    <div class="flex-blog-content">
+		      	<%= link_to blog_path(blog) do %>
+			        <%= image_tag blog.photos[0].to_s, size: "100x100", fallback: "no-image.png" %>
+			        <div class="index-blog-title"><%= blog.title %></div>
+			        <div class="index-blog-address"><%= blog.address %></div>
+			    <% end %>
+		      </div>
+	      <% end %>
+	    </div>
+<% end %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
 
   resources :customers, only: [:index, :show, :edit, :update, :destroy]
+    get '/customers/favorite', to: 'customers#favorite'
 
   resources :blogs do
   	collection do

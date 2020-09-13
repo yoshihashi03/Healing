@@ -27,15 +27,17 @@
 			<tr>
 					<!-- いいね機能 -->
 	          <td>
-	            <% if @blog.favorited_by?(current_customer) %>
-	              <%= link_to blog_favorites_path(@blog), method: :delete do %>
-	                <i class="fa fa-heart" aria-hidden="true" style="color: red;"><%= @blog.favorites.count%></i>
-	              <% end %>
-	            <% else %>
-	              <%= link_to blog_favorites_path(@blog), method: :post do %>
-	                <i class="fa fa-heart-o" aria-hidden="true"><%= @blog.favorites.count %></i>
-	              <% end %>
-	            <% end %>
+	          	<%# if !current_customer?(@blog.customer) %>
+		            <% if @blog.favorited_by?(current_customer) %>
+		              <%= link_to blog_favorites_path(@blog), method: :delete do %>
+		                <i class="fa fa-heart" aria-hidden="true" style="color: red;"><%= @blog.favorites.count%></i>
+		              <% end %>
+		            <% else %>
+		              <%= link_to blog_favorites_path(@blog), method: :post do %>
+		                <i class="fa fa-heart-o" aria-hidden="true"><%= @blog.favorites.count %></i>
+		              <% end %>
+		            <% end %>
+		        <%# end %>
 	          </td>
 					<!-- いいね機能 -->
 				<td>コメント数：<%= @blog.blog_comments.count %></td>
@@ -91,9 +93,9 @@
 		    	<th class="blog-show-content"><%= @blog.address %></th>
 		    </tr>
 
-		    <tr>
+		    <tr class="blog-show-flexbox">
 		    	<th class="blog-show-content-title">URL</th>
-		    	<th class="blog-show-content"><%= @blog.url_content %></th>
+		    	<th class="blog-show-content url-style"><%= auto_link(simple_format(@blog.url_content), html: { target: '_blank' }) %></th>
 		    </tr>
 
 		    <tr>
