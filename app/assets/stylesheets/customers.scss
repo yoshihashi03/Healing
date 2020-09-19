@@ -7,5 +7,28 @@
 }
 
 .name-style {
+	font-size: 15px;
+	font-family: 'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+	font-weight: bolder;
+}
+
+.my-customer {
+	background-color: #ffffcc;
+}
+
+.flex-favorite-box {
+	display: flex;
+}
+
+.flex-favorite-content {
+	text-align: center;
+}
+
+.customer-favorite-box {
+	width: 200px;
+	text-align: center;
+}
+
+.panel-title-customershow {
 	font-size: 20px;
 }

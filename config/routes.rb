@@ -4,16 +4,17 @@ Rails.application.routes.draw do
   put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
 
   resources :customers, only: [:index, :show, :edit, :update, :destroy]
-    get '/customers/favorite', to: 'customers#favorite'
+  get 'customers/:id/favorite', to: 'customers#favorite', as: 'customers_favorite'
 
-  resources :blogs do
-  	collection do
-    	post :upload_file
-  	end
+  get 'blogs/search', to: 'blogs#search'
+  resources :blogs, shallow: true do
+  	 collection do
+     	post :upload_file
+  	 end
   	resources :blog_comments, only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
-  	get 'search', to: 'search'
   end
+
 
   root to: 'homes#top'
   get 'homes/about', to: 'homes#about'

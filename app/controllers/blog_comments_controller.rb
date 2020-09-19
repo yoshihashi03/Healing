@@ -11,8 +11,7 @@ class BlogCommentsController < ApplicationController
   end
 
   def destroy
-    @blog = Blog.find(params[:blog_id])
-    blog_comment = current_customer.blog_comments.find_by(id: params[:id], blog_id: @blog.id)
+    blog_comment = BlogComment.find(params[:id])
     blog_comment.destroy
     redirect_to request.referer
   end

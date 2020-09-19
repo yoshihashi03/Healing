@@ -1,10 +1,10 @@
 <% if obj.errors.any? %>
     <div id="error_explanation">
-      <h3 class="error-title"><%= pluralize(obj.errors.count, "件のエラー") %></h3>
+      <strong class="error-style">※ <%= pluralize(obj.errors.count, "件のエラー") %></strong>
 
       <ul>
       <% obj.errors.full_messages.each do |message| %>
-        <li class="error-content"><%= message %></li>
+        <li class="error-style"><%= message %></li>
       <% end %>
       </ul>
     </div>

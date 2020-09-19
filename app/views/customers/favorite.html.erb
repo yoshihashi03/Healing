@@ -1,13 +1,30 @@
-<h3>お気に入り</h3>
+<div class="form-box">
+<div class="container">
+<div class="row">
+
+	<div class="favorite-index-title">お気に入り (<%= @favorites.count %>件)</div>
+
 	<div class="flex-blog">
-		<% @customer.blog.favorites.each do |blog| %>
-		    <div class="flex-blog-content">
-		      	<%= link_to blog_path(blog) do %>
-			        <%= image_tag blog.photos[0].to_s, size: "100x100", fallback: "no-image.png" %>
-			        <div class="index-blog-title"><%= blog.title %></div>
-			        <div class="index-blog-address"><%= blog.address %></div>
-			    <% end %>
-		      </div>
-	      <% end %>
-	    </div>
-<% end %>
+		<% @favorites.each do |favorite| %>
+			<div class="flex-blog-content">
+				<% if favorite.blog_images.present? %>
+			      	<div class="b">
+						<% favorite.blog_images.each do |image| %>
+							<%= attachment_image_tag image, :photo, class: "blog-photo-index" %>
+						<% end %>
+					</div>
+				<% else %>
+					<%= image_tag 'IMG_2667 2.jpeg', class: "blog-photo-index" %>
+				<% end %>
+
+				<%= link_to blog_path(favorite) do %>
+					<div class="index-blog-title"><%= favorite.title %></div>
+					<div class="index-blog-address"><%= favorite.address %></div>
+				<% end %>
+			</div>
+		<% end %>
+    </div>
+    <div class="paginate-style">
+    	<%= paginate @favorites %>
+    </div>
+

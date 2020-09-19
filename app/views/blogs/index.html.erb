@@ -1,32 +1,37 @@
 <div class="form-box">
 <div class="container">
 <div class="row">
-	<div class="col-xs-3">
 
-		<%#= render 'search', blog: @blog %>
 
-	</div>
-
-	<div class="col-xs-9">
-
-		<h2>投稿一覧</h2>
-			<div class="blog-index-newbt"><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-success' %></div>
+		<h2 class="index-title">投稿一覧</h2>
+			<div class="search-var-style"><%= render 'search' %></div>
+			<div class="blog-index-newbt"><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-info' %></div>
 
 
 	    <div class="flex-blog">
 	      <% @blogs.each do |blog| %>
 		      <div class="flex-blog-content">
-		      	<%= link_to blog_path(blog) do %>
-			        <%= image_tag blog.photos[0].to_s, size: "100x100", fallback: "no-image.png" %>
-			        <div class="index-blog-title"><%= blog.title %></div>
-			        <div class="index-blog-address"><%= blog.address %></div>
-			    <% end %>
+
+		      	<% if blog.blog_images.present? %>
+		      		<div class="b">
+						<% blog.blog_images.each do |image| %>
+							<%= attachment_image_tag image, :photo, class: "blog-photo-index" %>
+						<% end %>
+					</div>
+				<% else %>
+					 <%= image_tag 'IMG_2667 2.jpeg', class: "blog-photo-index" %>
+				<% end %>
+
+				<%= link_to blog_path(blog) do %>
+					<div class="index-blog-title"><%= blog.title %></div>
+				    <div class="index-blog-address"><%= blog.address %></div>
+				<% end %>
 		      </div>
 	      <% end %>
 	    </div>
-
-
-	</div>
+	    <div class="paginate-style">
+	    	<%= paginate @blogs %>
+		</div>
 
 </div>
 </div>

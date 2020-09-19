@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
 	 before_action :authenticate_customer!,only: [:new, :create, :edit, :update, :destroy]
 
   def index
-  	@blogs = Blog.all.page(params[:page]).per(6)
+  	@blogs = Blog.all.page(params[:page]).per(8)
   end
 
   def show
@@ -16,6 +16,7 @@ class BlogsController < ApplicationController
 
   def new
   	@blog = Blog.new
+    @blog.blog_images.build
   end
 
   def edit
@@ -26,9 +27,8 @@ class BlogsController < ApplicationController
   end
 
   def search
-    @blog = Blog.find(params[:id])
-    @genre = @blog.grnre
-    @genres = @blog.genre.all
+    @blogs = Blog.where(genre: params[:genre]).page(params[:page]).per(8)
+    # @blog_page =Blog.where(genre: params[:genre]).page(params[:page]).per(8)
   end
 
 
@@ -48,7 +48,7 @@ class BlogsController < ApplicationController
   	   		redirect_to blog_path(@blog)
     	else
     		render :edit
-    end
+      end
   end
 
   def destroy
@@ -60,7 +60,7 @@ class BlogsController < ApplicationController
 
   private
   	def blog_params
-  		params.require(:blog).permit(:title, :body, :address, :genre, :url_content, {photos: []})
+  		params.require(:blog).permit(:title, :body, :address, :genre, :url_content, blog_images_photos: [])
   	end
 
 end

@@ -1,34 +1,39 @@
 <div class="form-box">
 <div class="container">
 <div class="row">
-  <div class="col-xs-2 item-index-genres">
-    <%= render 'search', blog: @blog %>
-  </div>
-  <div class="col-xs-10">
-    <h2>種類 <%= @genre %>(全<%= @genre.count %>件)</h2>
 
-    <div class="flex-blog">
-      <% @genres.each do |genre| %>
-        <div class="flex-blog-content">
-          <%= link_to blog_path(genre) do %>
-          <%= attachment_image_tag genre, :photo, size: "200x150", fallback: "no_image.png"%><br>
-          <% end %>
-        </div>
-      <% end %>
+
+    <h2 class="index-title"><%= params[:genre] %> (全<%= @blogs.count %>件)</h2>
+      <div class="search-var-style">
+        <%= render 'search' %>
+        <div class="blog-index-newbt"><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-info' %></div>
+      </div>
 
       <div class="flex-blog">
         <% @blogs.each do |blog| %>
           <div class="flex-blog-content">
+
+            <% if blog.blog_images.present? %>
+              <div class="b">
+                <% blog.blog_images.each do |image| %>
+                  <%= attachment_image_tag image, :photo, class: "blog-photo-index" %>
+                <% end %>
+              </div>
+            <% else %>
+              <%= image_tag 'IMG_2667 2.jpeg', class: "blog-photo-index" %>
+            <% end %>
+
             <%= link_to blog_path(blog) do %>
-              <%= image_tag blog.photos[0].to_s, size: "100x100", fallback: "no-image.png" %>
               <div class="index-blog-title"><%= blog.title %></div>
-              <div class="index-blog-address"><%= blog.address %></div>
-          <% end %>
+                <div class="index-blog-address"><%= blog.address %></div>
+            <% end %>
           </div>
         <% end %>
       </div>
+      <div class="paginate-style">
+        <%= paginate @blogs %>
+      </div>
 
-    </div>
   </div>
 </div>
 </div>

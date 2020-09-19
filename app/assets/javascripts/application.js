@@ -12,17 +12,33 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+
 //= require jquery
 //= require bootstrap-sprockets
-//= require bxslider
 //= require_tree .
 
 
 $(function() {
     $('.a').slick({
         dots: true,
+        fade: true,
         autoplay: true,
-        autoplaySpeed: 1000,
+        autoplaySpeed: 5000,
     });
+    $('.b').slick({
+        dots: true,
+        fade: true,
+    });
+
+    $('#select_photo').change(function(e){
+        var files = $('input[type="file"]').prop('files');
+        if(files.length>3){
+          alert('画像ファイルは3枚以内で投稿して下さい')
+          $('input[type=file]').val('');
+
+    }
+  });
 });
+
+
+

@@ -2,48 +2,68 @@
 <div class="container">
 <div class="row">
 
-  <div class="col-xs-3 text-center">
-    <div class="panel panel-info">
-      <div class="panel-heading">
+  <!-- <div class="col-xs-3 text-center"> -->
+    <div class="panel">
+    	<div class="flex-favorite-content">
 
-      	<h2 class="panel-title"><%= @customer.name %></h2>
+	      	<div class="flex-favorite-box">
+	      		<div class="field">
+			        <div class="panel-body">
+			      		<%= attachment_image_tag @customer, :profile_image, size: "70x70", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash", class: "profile-image-style" %><br>
+			        </div>
+	         	</div>
 
-	      	<div class="field">
-		        <div class="panel-body">
-		      		<%= attachment_image_tag @customer, :profile_image, size: "70x70", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash", class: "profile-image-style" %>
-		        </div>
-         	</div>
+	         	<div class="field">
+	         		<div class="panel-body">
+	         			<div class="panel-title-customershow"><%= @customer.name %></div>
+			        	<%= link_to "編集", edit_customer_path(@customer.id), class: "btn btn-success" %>
+			        </div>
+			    </div>
 
-         	<div class="field">
-		        <div class="panel-body">
-		        	<%= link_to "編集", edit_customer_path(@customer.id), class: "btn btn-info" %>
-		        </div>
-		    </div>
-       </div>
-     </div>
-     <div><%= link_to "お気に入り", customers_favorite_path, class: "btn btn-primary" %></div>
-   </div>
+			</div>
+		</div>
+	</div>
+
+	<% if @customer == current_customer %>
+		<div class="favorite-byn">
+			<%= link_to "お気に入り一覧", customers_favorite_path, class: "btn btn-danger" %>
+		</div>
+	<% end %>
 
 
-	<div class="col-xs-9 text-center">
 
+
+
+   <!-- </div> -->
+
+
+	<!-- <div class="col-xs-9 text-center"> -->
+		<h3 class="myblog">投稿したお店</h3>
 		<div class="flex-blog">
 	      <% @blogs.each do |blog| %>
 		      <div class="flex-blog-content">
-		      	<%= link_to blog_path(blog) do %>
-			        <%= image_tag blog.photos[0].to_s, size: "100x100", fallback: "no-image.png" %>
-			        <div class="index-blog-title"><%= blog.title %></div>
-			        <div class="index-blog-address"><%= blog.address %></div>
-			    <% end %>
+
+		      	<% if blog.blog_images.present? %>
+		      		<div class="b">
+						<% blog.blog_images.each do |image| %>
+							<%= attachment_image_tag image, :photo, class: "blog-photo-index" %>
+						<% end %>
+					</div>
+				<% else %>
+					 <%= image_tag 'IMG_2667 2.jpeg', class: "blog-photo-index" %>
+				<% end %>
+
+				<%= link_to blog_path(blog) do %>
+					<div class="index-blog-title"><%= blog.title %></div>
+				    <div class="index-blog-address"><%= blog.address %></div>
+				<% end %>
+
 		      </div>
 	      <% end %>
 	    </div>
 
-	</div>
 
-
-
-
+	<!-- </div> -->
 
 </div>
 </div>

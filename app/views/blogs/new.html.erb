@@ -3,15 +3,14 @@
 <div class="row">
 
   <div class="col-md-6 col-md-offset-3 text-center">
-
-  	<%= render partial:'layouts/errors', locals:{obj: @blog} %>
+	<%= render partial:'layouts/errors', locals:{obj: @blog} %>
 
     <div class="panel panel-warning">
       <div class="panel-heading">
 
       	<h2 class="panel-title">新規投稿</h2>
 
-      	<%= form_with model: @blog, local:true do |f| %>
+      	<%= form_with model: @blog, local:true, class: "form" do |f| %>
 
 		      	<div class="field">
 		        	<div class="panel-body">
@@ -23,7 +22,7 @@
 	            <div class="field">
 	              	<div class="panel-body">
 	                	<%= f.label :body, "説明" %><br>
-	                	<%= f.text_area :body %>
+	                	<%= f.text_area :body, :rows => 6 %>
 	              	</div>
 	            </div>
 
@@ -48,15 +47,12 @@
 	              	</div>
 	            </div>
 
-
 	            <div class="field">
 	              	<div class="panel-body">
-	              		<%= f.label :photos, "image" %>
-			            <%= f.file_field :photos, multiple: true %>
+	              			<%= f.label :blog_images_photos, "画像(3枚まで)" %><br>
+			            	<%= f.attachment_field :blog_images_photos, multiple: true, id:"select_photo" %>
 			        </div>
 			    </div>
-
-
 
 		        <div class="submit-btn">
 		          	<div class="panel-body">
@@ -72,3 +68,27 @@
  </div>
 </div>
 </div>
+
+
+<!-- <script>
+  idについてクリック等のイベントが生じたら、eいかを実行せよという命令（３４行目まで。）e＝イベント情報を示す。２５〜３４行目まで。EventListenerとは、イベントを拾う（今回でいうclick）
+    $('.form').submit( function(e){
+		e.preventDefault();
+    // <div><h1>は全てElement。なので、select_fileという名前がついたid(Element)を呼び出す
+    // lengthが選んだファイルの数。lengthで数え上げている。filesがhtml上の選択ボックスのtype
+		var files = $('input[type="file"]').prop('files');
+
+    	if(files.length>3){
+      		alert('画像ファイルは3枚以内で投稿して下さい')
+		}
+    else{
+      $(this).unbind('submit').submit()
+       // このformは5行目で任意につけたフォーム。このdocument.form.submit()で、preventDefault();で無効化したものを再度有効化している。
+    }
+  });
+
+</script>
+ -->
+
+
+

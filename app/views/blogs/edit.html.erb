@@ -48,8 +48,8 @@
 
 			    <div class="field">
 	              	<div class="panel-body">
-	              		<%= f.label :photos, "image" %>
-			            <%= f.file_field :photos, multiple: true %>
+	              		<%= f.label :blog_images_photos, "画像(3枚まで)" %><br>
+			            <%= f.attachment_field :blog_images_photos, multiple: true, id:"select_photo" %>
 			        </div>
 			    </div>
 

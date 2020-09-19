@@ -2,41 +2,66 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.index-title {
+	font-family: 'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+	color: #32eeff;
+}
+
+.a .slick-slide {
+	height: 400px;
+	margin: 0 7%;
+}
+
 .blog-photo-show {
-  	width: 60%;
-  	height: 100px;
+  	height: 400px;
+  	width: 50%;
+  	margin: 3% 25%;
+}
+
+.b .slick-slide {
+  	width: 80%;
+  	height: 200px;
+}
+
+.blog-photo-index {
+  	width: 80%;
+  	height: 200px;
+}
+
+.table-scroll {
+	overflow-x : scroll;
+	margin: 0 3%;
+}
+
+.table-scroll-comment {
+	overflow-x : scroll;
+	margin: 0 3%;
+	width: 400px;
 }
 
 .blog-show-content-title {
 	color: #008080;
+	font-size-: 20px;
 }
 
 .blog-show-content {
 	font-size: 15px;
-}
-
-.blog-show-flexbox {
-	display: flex;
-	word-break: break-word;
-	flex-wrap: wrap;
-	font-size: 15px;
-	width: 100%;
-}
-
-.blog-show-flex {
 	text-align: left;
-	width: 100%;
+	width: 80%;
+	height: 50px;
+	word-break: break-all;
 }
 
 .flex-blog {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: flex-start;
-	margin-top: 20px;
+	margin: 6%;
+	text-align: center;
 }
 
 .flex-blog-content {
-	margin: 10px;
+	margin: 20px;
 	width: 200px;
 }
 
@@ -53,8 +78,28 @@
 	color: red;
 }
 
+.comment-style {
+	font-weight: bold;
+}
+
+.comment-form {
+	margin: 0 3%;
+}
+
 .url-style {
 	font-size: 10px;
 	text-align: left;
 	width: 100%;
 }
+
+.search-var-style {
+	width: 140px;
+}
+
+.panel-genre-title {
+	text-align: center;
+}
+.genre-panel-style {
+	text-align: center;
+}
+

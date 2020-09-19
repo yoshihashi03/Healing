@@ -23,16 +23,18 @@
 
 
 .icon-bar {
-	background-color: green;
+	background-color: #8eb8ff;
 }
 
 body {
 	padding-top: 50px;
+  height: 100%;
 	}
 
 .navbar {
-	background-color: #99ffff;
+	background-color: #eeeeee;
 }
+
 
 .form-box {
 	margin-top: 30px;
@@ -45,10 +47,10 @@ body {
 
 .slick-dots {
   li {
-    font-size: 20px !important;
+    font-size: 15px !important;
     button:before {
       content: "★" !important;
-      font-size: 14px !important;
+      font-size: 10px !important;
       color: rgb(60, 60, 60) !important;
     }
   }
@@ -58,34 +60,82 @@ ul {
   list-style: none;
 }
 
-.sign-error-title {
+.error-style {
   color: red;
 }
-
-.sign-error-content {
-  color: red;
-}
-.error-title {
-  color: red;
-}
-
-.error-content {
-  color: red;
-}
-
 
 .pagination>li>a {
   border: none;
   color: #696969;
   }
 
-
 .pagination>.active>a {
   background: #93c9ff;
   border-radius: 15px;
 }
 
-
 .pagination>li>a:hover {
   border-radius: 15px;
+}
+
+.paginate-style {
+  text-align: center;
+}
+
+.comment-paginate-style {
+  margin: 0 3%;
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {
+
+.container {
+  width: 90%;
+}
+
+.about-img {
+  width: 100%;
+  height: 100vh;
+  background-image: image-url("t-r-photography-TzjMd7i5WQI-unsplash.jpg");
+  background-size: 100% 100%;
+}
+
+.about-title {
+  font-size: 20px;
+}
+
+.about-content {
+  font-size: 10px;
+}
+
+.about-last {
+  font-size: 10px;
+}
+
+.navbar-header {
+  float: right;
+  width: 40px;
+  margin-right: 5%;
+}
+
+nav {
+  float: none;
+}
+
+.table-scroll-comment {
+  width: 300px;
+}
+
+.blog-photo-show {
+  height: 150px;
+}
+
+.a .slick-slide {
+  height: 150px;
+}
+
+
 }

@@ -3,7 +3,8 @@ class CustomersController < ApplicationController
 	 before_action :authenticate_customer!
 
   def index
-  	@customers = Customer.all
+  	@customers = Customer.all.page(params[:page]).per(6)
+    @customer = current_customer
   end
 
   def show
@@ -26,9 +27,11 @@ class CustomersController < ApplicationController
     end
   end
 
-  def favorite
-     @customer = current_customer
-  end
+   def favorite
+      @customer = Customer.find(params[:id])
+      @blogs = @customer.blogs
+      @favorites = Blog.where(id: blog_id = Favorite.where(customer_id: current_customer.id).select(:blog_id)).all.page(params[:page]).per(8)
+   end
 
   def hide
     @customer = Customer.find(current_customer.id)

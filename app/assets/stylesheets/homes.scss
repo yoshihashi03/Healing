@@ -8,10 +8,9 @@
   box-sizing: border-box;
 }
 
-
 .top-img {
 	width: 100%;
-	height: 90vh;
+	height: 100vh;
 	background-image: image-url("karen-lau-z_S5m-dqADA-unsplash.jpg");
 	background-size: 100% 100%;
 }
@@ -27,51 +26,54 @@
 	vertical-align: middle;
 }
 
-.top-font {
+.top-font-style {
 	text-align: center;
 	font-size: 30px;
-	color: #ffffbb;
+	color: white;
 	font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN',sans-serif;
 	background-color: rgba(0, 0, 0, 0.3);
 }
 
 .about-img {
 	width: 100%;
-	height: 90vh;
-	background-image: image-url("clyde-rs-4XbZCfU2Uoo-unsplash.jpg");
+	height: 100vh;
+	background-image: image-url("dog-684036_1920.jpg");
 	background-size: 100% 100%;
 }
 
 .about-box {
-	display: table;
 	width: 100%;
 	height: 90vh;
+
 }
 
 .about-body {
-	display: table-cell;
-	vertical-align: middle;
 	text-align: left;
 	font-size: 20px;
-	font-family: "Bradley Hand";
+	font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN',sans-serif;;
 }
 
 .about-title {
-	font-size: 50px;
-	color: green;
+	font-size: 30px;
+	color: #5d99ff;
 }
 
 .about-content {
 	font-size: 20px;
 	color: green;
-	font-family: 'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+	font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN',sans-serif;;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .about-last {
 	font-size: 20px;
-	color: green;
-	font-family: 'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
-	margin-top: 10px;
+	color: #ff88ff;
+	font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN',sans-serif;;
+}
+
+.about-blog-index {
+	margin-top: 20px;
 }
 
 
