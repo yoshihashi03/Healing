@@ -4,14 +4,16 @@ class BlogsController < ApplicationController
 
   def index
   	@blogs = Blog.all.page(params[:page]).per(8)
+    @count = Blog.all.count
   end
 
   def show
   	@blogs = Blog.all
   	@blog = Blog.find(params[:id])
   	@customer = @blog.customer
+    @count = @blog.blog_comments.count
   	@blog_comment = BlogComment.new
-  	@blog_comments = @blog.blog_comments.page(params[:page]).per(4)
+  	@blog_comments = @blog.blog_comments.order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def new
@@ -28,7 +30,7 @@ class BlogsController < ApplicationController
 
   def search
     @blogs = Blog.where(genre: params[:genre]).page(params[:page]).per(8)
-    # @blog_page =Blog.where(genre: params[:genre]).page(params[:page]).per(8)
+    @count = Blog.where(genre: params[:genre]).count
   end
 
 

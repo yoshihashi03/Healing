@@ -3,7 +3,7 @@
 <div class="row">
 
 
-    <h2 class="index-title"><%= params[:genre] %> (全<%= @blogs.count %>件)</h2>
+    <h2 class="index-title"><%= params[:genre] %> (全<%= @count %>件)</h2>
       <div class="search-var-style">
         <%= render 'search' %>
         <div class="blog-index-newbt"><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-info' %></div>

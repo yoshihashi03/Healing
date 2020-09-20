@@ -58,65 +58,23 @@
 			</tr>
 
 			<tr>
-      			<th class="blog-show-content-title">お気に入り</th>
-		    	<td>
-		    		<% if customer_signed_in? %>
-			    		<% if @blog.favorited_by?(current_customer) %>
-			              <%= link_to blog_favorites_path(@blog), method: :delete do %>
-			                <i class="fa fa-heart" aria-hidden="true" style="color: red;"> (登録者数 : <%= @blog.favorites.count %>人)</i>
-			              <% end %>
-			            <% else %>
-			              <%= link_to blog_favorites_path(@blog), method: :post do %>
-			                <i class="fa fa-heart-o" aria-hidden="true"> (登録者数 : <%= @blog.favorites.count %>人)</i>
-			              <% end %>
-			            <% end %>
-			        <% else %>
-			        	<i class="fa fa-heart" aria-hidden="true" style="color: red;"> (登録者数 : <%= @blog.favorites.count %>人)</i>
-			        <% end %>
-	          	</td>
-		    </tr>
-
-			<tr>
-				<th class="blog-show-content-title">コメント数</th>
-				<td class="blog-show-content"><%= @blog.blog_comments.count %>件</td>
+				<th class="blog-show-content-title">お気に入り</th>
+				<td id="likes_buttons_<%= @blog.id %>">
+		            <%= render partial: 'favorites/like', locals: { blog: @blog} %>
+		        </td>
 			</tr>
-      	</table>
-      </div>
+		</table>
+    </div>
 
-      	<!-- コメント一覧 -->
-      	<div class="table-scroll-comment">
-			<table class="table">
-				<thead>
-					<strong>コメント一覧</strong>
-				</thead>
-				<tbody class="">
-	      		<% @blog_comments.each do |blog_comment| %>
-			        <tr>
-			          <td class="blog-show-comment-customer">
-			            <%= link_to customer_path(blog_comment.customer), class: "customer_#{blog_comment.customer.id}" do %>
-			              <%= attachment_image_tag blog_comment.customer, :profile_image, size: "30x30", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash",class: "profile-image-style" %>
-			              <%= blog_comment.customer.name %>
-			            <% end %>
-			          </td>
-			          <td class="blog-show-content blog-show-comment">
-			          	<%= blog_comment.comment %>
-			          </td>
-			          <% if current_customer == blog_comment.customer %>
-			            <td><%= link_to '', blog_comment_path(blog_comment), class: 'glyphicon glyphicon-trash comment-deletebt', method: :delete %></td>
-			          <% end %>
-			        </tr>
-	      		<% end %>
-	      	</tbody>
-	    	</table>
-		</div>
-		<div class="comment-paginate-style">
-			<%= paginate @blog_comments %>
-		</div>
+
+    	<div class="comments_buttons_<%= @blog.id %>">
+    		<%= render partial: 'blog_comments/comment', locals: {count:@count, blog_comments: @blog_comments} %>
+    	</div>
 
 
       	<% if customer_signed_in? %>
 	     	<div class="comment-form">コメント記入欄(50字以内)
-		      	<%= form_for [@blog, @blog_comment] do |f| %>
+		      	<%= form_with model: [@blog, @blog_comment], data: {remote: true} do |f| %>
 	    	    	<%= f.text_area :comment, size: "30x4" %>
 	        		<%= f.submit 'コメント投稿', class: "btn btn-info" %>
 	      		<% end %>

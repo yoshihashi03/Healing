@@ -1,0 +1,1 @@
+$('.comments_buttons_<%= @blog.id %>').html("<%= j(render partial: 'blog_comments/comment', locals: {count:@count,blog_comments: @blog_comments}) %>");

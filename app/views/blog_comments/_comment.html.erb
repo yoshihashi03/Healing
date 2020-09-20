@@ -1,0 +1,30 @@
+<div class="table-scroll-comment">
+<table class="table">
+	<thead>
+		<strong>コメント一覧(<%= count %>件)</strong>
+	</thead>
+	<tbody class="">
+  		<% blog_comments.each do |blog_comment| %>
+	        <tr>
+	          <td class="blog-show-comment-customer">
+	            <%= link_to customer_path(blog_comment.customer), class: "customer_#{blog_comment.customer.id}", remote: true do %>
+	              <%= attachment_image_tag blog_comment.customer, :profile_image, size: "30x30", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash",class: "profile-image-style" %>
+	              <%= blog_comment.customer.name %>
+	            <% end %>
+	          </td>
+	          <td class="blog-show-content blog-show-comment">
+	          	<%= blog_comment.comment %>
+	          </td>
+	          <% if current_customer == blog_comment.customer %>
+	            <td><%= link_to '', blog_comment_path(blog_comment), class: 'glyphicon glyphicon-trash comment-deletebt', method: :delete, remote: true %></td>
+	          <% end %>
+	        </tr>
+  		<% end %>
+  	</tbody>
+</table>
+
+	<div class="comment-paginate-style">
+		<%= paginate blog_comments %>
+	</div>
+</div>
+
