@@ -50,36 +50,37 @@
 		    	</td>
 		    </tr>
 
-		    <tr>
-		    	<% if @blog.customer == current_customer %>
-	      			<th><%= link_to "編集", edit_blog_path(@blog.id), class: "btn btn-success" %></th>
-	      			<td><%= link_to "削除", blog_path, class: 'btn btn-danger', method: :delete %></td>
-      			<% end %>
-			</tr>
-
 			<tr>
 				<th class="blog-show-content-title">お気に入り</th>
 				<td id="likes_buttons_<%= @blog.id %>">
 		            <%= render partial: 'favorites/like', locals: { blog: @blog} %>
 		        </td>
 			</tr>
+
+			<tr>
+		    	<% if @blog.customer == current_customer || current_customer.admin? %>
+	      			<th><%= link_to "編集", edit_blog_path(@blog.id), class: "btn btn-success" %></th>
+	      			<td><%= link_to "削除", blog_path, class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      			<% end %>
+			</tr>
+
 		</table>
     </div>
 
 
-    	<div class="comments_buttons_<%= @blog.id %>">
-    		<%= render partial: 'blog_comments/comment', locals: {count:@count, blog_comments: @blog_comments} %>
+	<div class="comments_buttons_<%= @blog.id %>">
+		<%= render partial: 'blog_comments/comment', locals: {count:@count, blog_comments: @blog_comments} %>
+	</div>
+
+
+  	<% if customer_signed_in? %>
+     	<div class="comment-form">コメント記入欄(50字以内)
+	      	<%= form_with model: [@blog, @blog_comment], data: {remote: true} do |f| %>
+    	    	<%= f.text_area :comment, size: "30x4" %>
+        		<%= f.submit 'コメント投稿', class: "btn btn-info" %>
+      		<% end %>
     	</div>
-
-
-      	<% if customer_signed_in? %>
-	     	<div class="comment-form">コメント記入欄(50字以内)
-		      	<%= form_with model: [@blog, @blog_comment], data: {remote: true} do |f| %>
-	    	    	<%= f.text_area :comment, size: "30x4" %>
-	        		<%= f.submit 'コメント投稿', class: "btn btn-info" %>
-	      		<% end %>
-	    	</div>
-    	<% end %>
+	<% end %>
 </div>
 </div>
 </div>

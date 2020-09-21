@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
 
-	 before_action :authenticate_customer!,only: [:new, :create, :edit, :update, :destroy]
+	 before_action :authenticate_customer!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
   	@blogs = Blog.all.page(params[:page]).per(8)
@@ -23,8 +23,8 @@ class BlogsController < ApplicationController
 
   def edit
   	@blog = Blog.find(params[:id])
-		if @blog.customer_id != current_customer.id
-			redirect_to blogs_path
+		unless @blog.customer_id == current_customer.id || admin_customer?
+      redirect_to blogs_path
 		end
   end
 
@@ -36,7 +36,7 @@ class BlogsController < ApplicationController
 
   def create
   	@blog = Blog.new(blog_params)
-  	@blog.customer_id = current_customer.id
+  	@blog.customer_id == current_customer.id
     	if @blog.save
       		redirect_to blog_path(@blog)
     	else
@@ -64,5 +64,9 @@ class BlogsController < ApplicationController
   	def blog_params
   		params.require(:blog).permit(:title, :body, :address, :genre, :url_content, blog_images_photos: [])
   	end
+
+    def admin_customer?
+      current_customer.admin?
+    end
 
 end

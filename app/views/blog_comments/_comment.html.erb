@@ -15,7 +15,7 @@
 	          <td class="blog-show-content blog-show-comment">
 	          	<%= blog_comment.comment %>
 	          </td>
-	          <% if current_customer == blog_comment.customer %>
+	          <% if current_customer == blog_comment.customer || current_customer.admin? %>
 	            <td><%= link_to '', blog_comment_path(blog_comment), class: 'glyphicon glyphicon-trash comment-deletebt', method: :delete, remote: true %></td>
 	          <% end %>
 	        </tr>

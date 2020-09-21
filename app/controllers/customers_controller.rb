@@ -14,7 +14,7 @@ class CustomersController < ApplicationController
 
   def edit
   	@customer = Customer.find(params[:id])
-  	if @customer.id != current_customer.id
+  	unless @customer.id == current_customer.id || admin_customer?
       redirect_to customer_path(current_customer)
     end
   end
@@ -34,7 +34,7 @@ class CustomersController < ApplicationController
    end
 
   def hide
-    @customer = Customer.find(current_customer.id)
+    @customer = Customer.find(params[:id])
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
@@ -43,6 +43,10 @@ class CustomersController < ApplicationController
   private
   def customer_params
   params.require(:customer).permit(:name, :email, :profile_image, :password)
+  end
+
+  def admin_customer?
+    current_customer.admin?
   end
 
 end
