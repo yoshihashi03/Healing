@@ -50,6 +50,11 @@
 		    	</td>
 		    </tr>
 
+		     <tr>
+		    	<th class="blog-show-content-title">投稿日</th>
+		    	<td class="blog-show-content"><%= @blog.created_at.strftime('%Y/%m/%d') %></td>
+		    </tr>
+
 			<tr>
 				<th class="blog-show-content-title">お気に入り</th>
 				<td id="likes_buttons_<%= @blog.id %>">

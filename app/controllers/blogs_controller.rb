@@ -36,7 +36,7 @@ class BlogsController < ApplicationController
 
   def create
   	@blog = Blog.new(blog_params)
-  	@blog.customer_id == current_customer.id
+  	@blog.customer_id = current_customer.id
     	if @blog.save
       		redirect_to blog_path(@blog)
     	else

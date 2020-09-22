@@ -24,7 +24,7 @@
 
 				<%= link_to blog_path(blog) do %>
 					<div class="index-blog-title"><%= blog.title %></div>
-				    <div class="index-blog-address"><%= blog.address %></div>
+				    <div class="index-blog-address"><%= strip_tags(blog.address).truncate(8) %></div>
 				<% end %>
 		      </div>
 	      <% end %>
