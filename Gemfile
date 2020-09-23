@@ -77,8 +77,8 @@ gem 'pry-byebug'
 gem 'rails-i18n'
 gem 'bxslider-rails'
 gem 'rails_autolink'
-
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+gem 'refile-s3'

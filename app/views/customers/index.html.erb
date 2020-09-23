@@ -7,7 +7,7 @@
     <tbody>
       <tr class="my-customer">
           <td><span class="glyphicon glyphicon-user" aria-hidden="true"></span>My</td>
-          <td><%= attachment_image_tag @customer, :profile_image, size: "60x60", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash",class: "profile-image-style" %></td>
+          <td><%= attachment_image_tag @customer, :profile_image, size: "60x60", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash.jpg",class: "profile-image-style" %></td>
           <td class="name-style">
             <%= link_to customer_path(@customer) do %>
               <%= @customer.name %>
@@ -19,7 +19,7 @@
         <% if customer.is_deleted == false && customer != current_customer %>
           <tr>
             <td></td>
-            <td><%= attachment_image_tag customer, :profile_image, size: "60x60", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash",class: "profile-image-style" %></td>
+            <td><%= attachment_image_tag customer, :profile_image, size: "60x60", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash.jpg",class: "profile-image-style" %></td>
             <td class="name-style">
               <%= link_to customer do %>
                 <%= customer.name %>

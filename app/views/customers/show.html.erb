@@ -12,14 +12,14 @@
 			        </div>
 	         	</div>
 
-	         	<% if @customer == current_customer || current_customer.admin? %>
-		         	<div class="field">
-		         		<div class="panel-body">
-		         			<div class="panel-title-customershow"><%= @customer.name %></div>
-				        	<%= link_to "編集", edit_customer_path(@customer.id), class: "btn btn-success" %>
-				        </div>
-				    </div>
-				<% end %>
+	         	<div class="field">
+		         	<div class="panel-body">
+		         		<div class="panel-title-customershow"><%= @customer.name %></div>
+		         		<% if @customer == current_customer || current_customer.admin? %>
+		         			<%= link_to "編集", edit_customer_path(@customer.id), class: "btn btn-success" %>
+		         		<% end %>
+		         	</div>
+		         </div>
 
 			</div>
 		</div>
