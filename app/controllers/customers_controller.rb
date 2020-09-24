@@ -9,7 +9,7 @@ class CustomersController < ApplicationController
 
   def show
   	@customer = Customer.find(params[:id])
-    @blogs = @customer.blogs
+    @blogs = @customer.blogs.page(params[:page]).per(6)
   end
 
   def edit
