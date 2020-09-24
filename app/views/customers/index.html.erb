@@ -5,6 +5,7 @@
 
   <table class='table table-hover table-inverse'>
     <tbody>
+      <!-- ログイン者のアカウントが1番上に表示 -->
       <tr class="my-customer">
           <td><span class="glyphicon glyphicon-user" aria-hidden="true"></span>My</td>
           <td><%= attachment_image_tag @customer, :profile_image, size: "60x60", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash.jpg",class: "profile-image-style" %></td>
@@ -15,6 +16,7 @@
           </td>
       </tr>
 
+      <!-- ログイン者以外で退会していないアカウントを表示 -->
       <% @customers.each do |customer| %>
         <% if customer.is_deleted == false && customer != current_customer %>
           <tr>

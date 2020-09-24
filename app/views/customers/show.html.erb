@@ -15,6 +15,7 @@
 	         	<div class="field">
 		         	<div class="panel-body">
 		         		<div class="panel-title-customershow"><%= @customer.name %></div>
+		         		<!-- ログイン者か管理者だったら表示 -->
 		         		<% if @customer == current_customer || current_customer.admin? %>
 		         			<%= link_to "編集", edit_customer_path(@customer.id), class: "btn btn-success" %>
 		         		<% end %>
@@ -25,36 +26,20 @@
 		</div>
 	</div>
 
+	<!-- ログイン者だったら表示 -->
 	<% if @customer == current_customer %>
 		<div class="favorite-byn">
 			<%= link_to "お気に入り一覧", customers_favorite_path, class: "btn btn-danger" %>
 		</div>
 	<% end %>
 
-
 	<h3 class="myblog">投稿したお店</h3>
 	<div class="flex-blog">
-      <% @blogs.each do |blog| %>
-	      <div class="flex-blog-content">
-
-	      	<% if blog.blog_images.present? %>
-	      		<div class="b">
-					<% blog.blog_images.each do |image| %>
-						<%= attachment_image_tag image, :photo, class: "blog-photo-index" %>
-					<% end %>
-				</div>
-			<% else %>
-				 <%= image_tag 'IMG_2667 2.jpeg', class: "blog-photo-index" %>
-			<% end %>
-
-			<%= link_to blog_path(blog) do %>
-				<div class="index-blog-title"><%= blog.title %></div>
-			    <div class="index-blog-address"><%= blog.address %></div>
-			<% end %>
-
-	      </div>
-      <% end %>
+    	<%= render 'blogs/index', blogs: @blogs %><!-- 投稿一覧テンプレート -->
     </div>
+    <div class="paginate-style">
+		<%= paginate @blogs %>
+	</div>
 
 </div>
 </div>

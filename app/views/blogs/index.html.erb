@@ -1,39 +1,28 @@
 <div class="form-box">
-<div class="container">
-<div class="row">
+	<div class="container">
+		<div class="row">
 
+			<h2 class="index-title">投稿一覧 (全<%= @count %>件)</h2>
 
-		<h2 class="index-title">投稿一覧 (全<%= @count %>件)</h2>
-			<div class="search-var-style"><%= render 'search' %></div>
-			<div class="blog-index-newbt"><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-info' %></div>
+			<div class="search-title">
+			 	<%= form_tag(blogs_search_path, :method => 'get') do %>
+			    	<%= text_field_tag :search_title %>
+			    	<%= submit_tag '店名検索', :name => nil, class: 'search-title-bt' %>
+			  	<% end %>
+			</div>
 
-
-	    <div class="flex-blog">
-	      <% @blogs.each do |blog| %>
-		      <div class="flex-blog-content">
-
-		      	<% if blog.blog_images.present? %>
-		      		<div class="b">
-						<% blog.blog_images.each do |image| %>
-							<%= attachment_image_tag image, :photo, class: "blog-photo-index" %>
-						<% end %>
-					</div>
-				<% else %>
-					 <%= image_tag 'IMG_2667 2.jpeg', class: "blog-photo-index" %>
+				<div class="search-var-style"><%= render 'search' %></div><!-- 検索パネル -->
+				<% if customer_signed_in? %>
+					<div class="blog-index-newbt"><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-info' %></div>
 				<% end %>
 
-				<%= link_to blog_path(blog) do %>
-					<div class="index-blog-title"><%= blog.title %></div>
-				    <div class="index-blog-address"><%= strip_tags(blog.address).truncate(8) %></div>
-				<% end %>
-		      </div>
-	      <% end %>
-	    </div>
-	    <div class="paginate-style">
-	    	<%= paginate @blogs %>
+			    <div class="flex-blog">
+			    	<%= render 'index', blogs: @blogs %><!-- 投稿一覧テンプレート -->
+			    </div>
+			    <div class="paginate-style">
+			    	<%= paginate @blogs %>
+				</div>
 		</div>
-
-</div>
-</div>
+	</div>
 </div>
 

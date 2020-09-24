@@ -1,0 +1,20 @@
+<!-- 投稿一覧テンプレート -->
+<% blogs.each do |blog| %>
+      <div class="flex-blog-content">
+
+      	<% if blog.blog_images.present? %>
+      		<div class="b">
+				<% blog.blog_images.each do |image| %>
+					<%= attachment_image_tag image, :photo, class: "blog-photo-index" %>
+				<% end %>
+			</div>
+		<% else %>
+			 <%= image_tag 'IMG_2667_2.jpeg', class: "blog-photo-index" %>
+		<% end %>
+
+		<%= link_to blog_path(blog) do %>
+			<div class="index-blog-title"><%= blog.title %></div>
+		    <div class="index-blog-address"><%= strip_tags(blog.address).truncate(8) %></div>
+		<% end %>
+      </div>
+<% end %>

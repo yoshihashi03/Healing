@@ -33,6 +33,10 @@ class BlogsController < ApplicationController
     @count = Blog.where(genre: params[:genre]).count
   end
 
+  def search_title
+    @blogs = Blog.search(params[:search_title])
+  end
+
 
   def create
   	@blog = Blog.new(blog_params)

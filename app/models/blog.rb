@@ -14,6 +14,14 @@ class Blog < ApplicationRecord
   	validates :address
   end
 
+  def self.search_title(search)
+      if search
+        Blog.where(['name LIKE ?', "%#{search}%"])
+      else
+        Blog.all
+      end
+  end
+
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?
   end
