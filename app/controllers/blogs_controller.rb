@@ -28,13 +28,17 @@ class BlogsController < ApplicationController
 		end
   end
 
+# 種類検索
   def search
     @blogs = Blog.where(genre: params[:genre]).page(params[:page]).per(8)
     @count = Blog.where(genre: params[:genre]).count
   end
 
+# titleあいまい検索
   def search_title
-    @blogs = Blog.search(params[:search_title])
+    @blogs = Blog.search_title(params[:search_title]).page(params[:page]).per(8)
+    @count = @blogs.count
+    render :search
   end
 
 

@@ -16,7 +16,7 @@ class Blog < ApplicationRecord
 
   def self.search_title(search)
       if search
-        Blog.where(['name LIKE ?', "%#{search}%"])
+        Blog.where(['title LIKE ?', "%#{search}%"])
       else
         Blog.all
       end

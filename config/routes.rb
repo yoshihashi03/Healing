@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'customers/:id/favorite', to: 'customers#favorite', as: 'customers_favorite'
 
   get 'blogs/search', to: 'blogs#search'
+  get 'blogs/search_title', to: 'blogs#search_title'
   resources :blogs, shallow: true do
   	 collection do
      	post :upload_file
