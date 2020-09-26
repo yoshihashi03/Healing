@@ -9,13 +9,9 @@ Rails.application.routes.draw do
   get 'blogs/search', to: 'blogs#search'
   get 'blogs/search_title', to: 'blogs#search_title'
   resources :blogs, shallow: true do
-  	 collection do
-     	post :upload_file
-  	 end
   	resources :blog_comments, only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
-
 
   root to: 'homes#top'
   get 'homes/about', to: 'homes#about'

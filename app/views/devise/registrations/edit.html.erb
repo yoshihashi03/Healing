@@ -1,54 +1,53 @@
 <div class="form-box">
-<div class="container">
-<div class="row">
+  <div class="container">
+    <div class="row">
 
-  <div class="col-md-6 col-md-offset-3 text-center">
+      <div class="col-md-6 col-md-offset-3 text-center">
 
-    <%= render "devise/shared/error_messages", resource: resource %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="panel panel-info">
-      <div class="panel-heading">
+        <div class="panel panel-info">
+          <div class="panel-heading">
 
+            <h2 class="panel-title">パスワード変更</h2>
 
-        <h2 class="panel-title">パスワード変更</h2>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <div class="field">
+                  <div class="panel-body">
+                    <%= f.label :current_password, "旧パスワード" %><br>
+                    <%= f.password_field :current_password, autocomplete: "current-password" %>
+                  </div>
+                </div>
 
-            <div class="field">
-              <div class="panel-body">
-                <%= f.label :current_password, "旧パスワード" %><br>
-                <%= f.password_field :current_password, autocomplete: "current-password" %>
-              </div>
-            </div>
+                <div class="field">
+                  <div class="panel-body">
+                    <%= f.label :password, "新パスワード" %><br>
+                    <%= f.password_field :password, autocomplete: "new-password" %>
+                    <% if @minimum_password_length %>
+                      <br />
+                      <em><%= @minimum_password_length %> 文字以内</em>
+                    <% end %>
+                  </div>
+                </div>
 
-            <div class="field">
-              <div class="panel-body">
-                <%= f.label :password, "新パスワード" %><br>
-                <%= f.password_field :password, autocomplete: "new-password" %>
-                <% if @minimum_password_length %>
-                  <br />
-                  <em><%= @minimum_password_length %> 文字以内</em>
-                <% end %>
-              </div>
-            </div>
+                <div class="field">
+                  <div class="panel-body">
+                    <%= f.label :password_confirmation, "新パスワード確認" %><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                  </div>
+                </div>
 
-            <div class="field">
-              <div class="panel-body">
-                <%= f.label :password_confirmation, "新パスワード確認" %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-              </div>
-            </div>
+                <div class="actions">
+                  <div class="panel-body"><%= f.submit "Update" %></div>
+                </div>
+              <% end %>
 
-            <div class="actions">
-              <div class="panel-body"><%= f.submit "Update" %></div>
-            </div>
-          <% end %>
+              <%= link_to "Back", :back, class: "btn btn-outline-danger" %>
 
-          <%= link_to "Back", :back, class: "btn btn-outline-danger" %>
-
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 </div>
 </div>
 </div>

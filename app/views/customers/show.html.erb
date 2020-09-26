@@ -1,46 +1,46 @@
 <div class="form-box">
-<div class="container">
-<div class="row">
+	<div class="container">
+		<div class="row">
 
-    <div class="panel">
-    	<div class="flex-favorite-content">
+		    <div class="panel">
+		    	<div class="flex-favorite-content">
 
-	      	<div class="flex-favorite-box">
-	      		<div class="field">
-			        <div class="panel-body">
-			      		<%= attachment_image_tag @customer, :profile_image, size: "70x70", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash.jpg", class: "profile-image-style" %><br>
-			        </div>
-	         	</div>
+			      	<div class="flex-favorite-box">
+			      		<div class="field">
+					        <div class="panel-body">
+					      		<%= attachment_image_tag @customer, :profile_image, size: "70x70", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash.jpg", class: "profile-image-style" %><br>
+					        </div>
+			         	</div>
 
-	         	<div class="field">
-		         	<div class="panel-body">
-		         		<div class="panel-title-customershow"><%= @customer.name %></div>
-		         		<!-- ログイン者か管理者だったら表示 -->
-		         		<% if @customer == current_customer || current_customer.admin? %>
-		         			<%= link_to "編集", edit_customer_path(@customer.id), class: "btn btn-success" %>
-		         		<% end %>
-		         	</div>
-		         </div>
+			         	<div class="field">
+				         	<div class="panel-body">
+				         		<div class="panel-title-customershow"><%= @customer.name %></div>
+				         		<!-- ログイン者か管理者だったら表示 -->
+				         		<% if @customer == current_customer || current_customer.admin? %>
+				         			<%= link_to "編集", edit_customer_path(@customer.id), class: "btn btn-success" %>
+				         		<% end %>
+				         	</div>
+				         </div>
 
+					</div>
+				</div>
 			</div>
+
+			<!-- ログイン者だったら表示 -->
+			<% if @customer == current_customer %>
+				<div class="favorite-byn">
+					<%= link_to "お気に入り一覧", customers_favorite_path, class: "btn btn-danger" %>
+				</div>
+			<% end %>
+
+			<h3 class="myblog">投稿したお店</h3>
+			<div class="flex-blog">
+		    	<%= render 'blogs/index', blogs: @blogs %><!-- 投稿一覧テンプレート -->
+		    </div>
+		    <div class="paginate-style">
+				<%= paginate @blogs %>
+			</div>
+
 		</div>
 	</div>
-
-	<!-- ログイン者だったら表示 -->
-	<% if @customer == current_customer %>
-		<div class="favorite-byn">
-			<%= link_to "お気に入り一覧", customers_favorite_path, class: "btn btn-danger" %>
-		</div>
-	<% end %>
-
-	<h3 class="myblog">投稿したお店</h3>
-	<div class="flex-blog">
-    	<%= render 'blogs/index', blogs: @blogs %><!-- 投稿一覧テンプレート -->
-    </div>
-    <div class="paginate-style">
-		<%= paginate @blogs %>
-	</div>
-
-</div>
-</div>
 </div>

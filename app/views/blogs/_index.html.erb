@@ -1,6 +1,6 @@
 <!-- 投稿一覧テンプレート -->
 <% blogs.each do |blog| %>
-      <div class="flex-blog-content">
+    <div class="flex-blog-content">
 
       	<% if blog.blog_images.present? %>
       		<div class="index-slider">
@@ -16,5 +16,5 @@
 			<div class="blog-title"><%= blog.title %></div>
 		    <div><%= strip_tags(blog.address).truncate(8) %></div>
 		<% end %>
-      </div>
+    </div>
 <% end %>

@@ -1,14 +1,14 @@
 
-	<% if customer_signed_in? %>
-		<% if blog.favorited_by?(current_customer) %>
-			<%= link_to blog_favorites_path(blog), method: :delete, remote: true do %>
-			    <i class="fa fa-heart" aria-hidden="true" style="color: red;"> (登録者数 : <%= blog.favorites.count %>人)</i>
-			<% end %>
-		<% else %>
-			<%= link_to blog_favorites_path(blog), method: :post, remote: true do %>
-			    <i class="fa fa-heart-o" aria-hidden="true"> (登録者数 : <%= blog.favorites.count %>人)</i>
-			<% end %>
+<% if customer_signed_in? %>
+	<% if blog.favorited_by?(current_customer) %>
+		<%= link_to blog_favorites_path(blog), method: :delete, remote: true do %>
+		    <i class="fa fa-heart" aria-hidden="true" style="color: red;"> (登録者数 : <%= blog.favorites.count %>人)</i>
 		<% end %>
 	<% else %>
-		<i class="fa fa-heart" aria-hidden="true" style="color: red;"> (登録者数 : <%= blog.favorites.count %>人)</i>
+		<%= link_to blog_favorites_path(blog), method: :post, remote: true do %>
+		    <i class="fa fa-heart-o" aria-hidden="true"> (登録者数 : <%= blog.favorites.count %>人)</i>
+		<% end %>
 	<% end %>
+<% else %>
+	<i class="fa fa-heart" aria-hidden="true" style="color: red;"> (登録者数 : <%= blog.favorites.count %>人)</i>
+<% end %>

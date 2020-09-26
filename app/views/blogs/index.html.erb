@@ -11,17 +11,19 @@
 			  	<% end %>
 			</div>
 
-				<div class="search-var-style"><%= render 'search' %></div><!-- 検索パネル -->
-				<% if customer_signed_in? %>
-					<div><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-info' %></div>
-				<% end %>
+			<div class="search-var-style"><%= render 'search' %></div><!-- 検索パネル -->
 
-			    <div class="flex-blog">
-			    	<%= render 'index', blogs: @blogs %><!-- 投稿一覧テンプレート -->
-			    </div>
-			    <div class="paginate-style">
-			    	<%= paginate @blogs %>
-				</div>
+			<% if customer_signed_in? %>
+				<div><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-info' %></div>
+			<% end %>
+
+		    <div class="flex-blog">
+		    	<%= render 'index', blogs: @blogs %><!-- 投稿一覧テンプレート -->
+		    </div>
+		    <div class="paginate-style">
+		    	<%= paginate @blogs %>
+			</div>
+
 		</div>
 	</div>
 </div>

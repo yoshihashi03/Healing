@@ -1,36 +1,36 @@
 <div class="form-box">
-<div class="container">
-<div class="row">
+  <div class="container">
+    <div class="row">
 
-  <div class="col-md-6 col-md-offset-3 text-center">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-      <h2 class="panel-title">ログイン</h2>
+      <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h2 class="panel-title">ログイン</h2>
 
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="field">
-            <div class="panel-body">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
-          </div>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="field">
+                <div class="panel-body">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </div>
+              </div>
 
-          <div class="field">
-            <div>
-            <%= f.label :password, class: "panel-body" %><br />
-            <%= f.password_field :password, autocomplete: "current-password" %>
-          </div>
-          </div>
+              <div class="field">
+                <div>
+                <%= f.label :password, class: "panel-body" %><br />
+                <%= f.password_field :password, autocomplete: "current-password" %>
+              </div>
+              </div>
 
-          <div class="actions">
-            <div class="panel-body"><%= f.submit "ログイン" %></div>
-          </div>
-        <% end %>
+              <div class="actions">
+                <div class="panel-body"><%= f.submit "ログイン" %></div>
+              </div>
+            <% end %>
 
-        <%#= render "devise/shared/links" %>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
-</div>
-</div>
 </div>
