@@ -15,16 +15,16 @@
     <nav>
       <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
         <% if customer_signed_in? %>
-          <li class="nav_list"><%= link_to 'Top', root_path, class: 'glyphicon glyphicon-tree-conifer' %></li>
-          <li class="nav_list"><%= link_to '会員一覧', customers_path, class: 'glyphicon glyphicon-user users' %></li>
-          <li class="nav_list"><%= link_to '投稿一覧', blogs_path, class: 'glyphicon glyphicon-music'%></li>
-          <li class="nav_list"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'glyphicon glyphicon-pushpin' %></li>
+          <li class="nav_list"><%= link_to 'Top', root_path, class: 'nav-style' %></li>
+          <li class="nav_list"><%= link_to '会員一覧', customers_path, class: 'nav-style' %></li>
+          <li class="nav_list"><%= link_to '投稿一覧', blogs_path, class: 'nav-style'%></li>
+          <li class="nav_list"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-style' %></li>
         <% else %>
-          <li class="nav_list"><%= link_to 'Top', root_path, class: 'glyphicon glyphicon-tree-conifer' %></li>
-          <li class="nav_list"><%= link_to 'About', homes_about_path, class: 'glyphicon glyphicon-globe' %></li>
-          <li class="nav_list"><%= link_to '投稿一覧', blogs_path, class: 'glyphicon glyphicon-music'%></li>
-          <li class="nav_list"><%= link_to '新規会員登録', new_customer_registration_path, class: 'glyphicon glyphicon-pencil' %></li>
-          <li class="nav_list"><%= link_to 'ログイン', new_customer_session_path , class: 'glyphicon glyphicon-pushpin'%></li>
+          <li class="nav_list"><%= link_to 'Top', root_path, class: 'nav-style' %></li>
+          <li class="nav_list"><%= link_to 'About', homes_about_path, class: 'nav-style' %></li>
+          <li class="nav_list"><%= link_to '投稿一覧', blogs_path, class: 'nav-style'%></li>
+          <li class="nav_list"><%= link_to '新規会員登録', new_customer_registration_path, class: 'nav-style' %></li>
+          <li class="nav_list"><%= link_to 'ログイン', new_customer_session_path , class: 'nav-style'%></li>
         <% end %>
       </ul>
     </nav>

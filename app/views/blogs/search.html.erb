@@ -5,15 +5,8 @@
 
     <h2 class="index-title"><%= params[:genre] %> (全<%= @count %>件)</h2>
 
-    <div class="search-title">
-      <%= form_tag(blogs_search_path, :method => 'get') do %>
-          <%= text_field_tag :search_title %>
-          <%= submit_tag '店名検索', :name => nil, class: 'search-title-bt' %>
-        <% end %>
-    </div>
-
       <div class="search-var-style">
-        <%= render 'search' %><!-- 検索パネル -->
+        <%= render 'search' %><!-- 種類検索パネル -->
         <div class="blog-index-newbt"><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-info' %></div>
       </div>
 

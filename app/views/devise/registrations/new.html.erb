@@ -27,8 +27,8 @@
             </div>
 
             <div class="field">
-              <div class="panel-body">
-                <%= f.label :password, "パスワード" %><br>
+              <div>
+                <%= f.label :password, "パスワード", class: "panel-body"  %><br>
                   <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %> 文字以上)</em>
                   <% end %><br />
@@ -37,8 +37,8 @@
             </div>
 
             <div class="field">
-              <div class="panel-body">
-                <%= f.label :password_confirmation, "パスワード確認" %><br>
+              <div>
+                <%= f.label :password_confirmation, "パスワード確認", class: "panel-body"  %><br>
                 <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
               </div>
             </div>

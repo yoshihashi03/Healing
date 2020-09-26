@@ -3,13 +3,13 @@
 <div class="row">
 
 	<% if @blog.blog_images.present? %>
-		<div class="a">
+		<div class="show-slider">
 			<% @blog.blog_images.each do |image| %>
-			  	<%= attachment_image_tag image, :photo, size: "50x50", class: "blog-photo-show" %>
+			  	<%= attachment_image_tag image, :photo, size: "50x50", class: "blog-show-photo" %>
 			<% end %>
 		</div>
 	<% else %>
-		<%= image_tag 'IMG_2667_2.jpg', class: "blog-photo-show" %>
+		<%= image_tag 'IMG_2667_2.jpg', class: "blog-show-photo" %>
 	<% end %>
 
 	<div class="panel panel-info">
@@ -63,10 +63,13 @@
 			</tr>
 
 			<tr>
-		    	<% if @blog.customer == current_customer || current_customer.admin? %>
-	      			<th><%= link_to "編集", edit_blog_path(@blog.id), class: "btn btn-success" %></th>
-	      			<td><%= link_to "削除", blog_path, class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-      			<% end %>
+				<!-- ログインしていて、ログイン者か管理者なら、投稿の編集/削除ボタン表示 -->
+				<% if customer_signed_in? %>
+			    	<% if @blog.customer == current_customer || current_customer.admin? %>
+		      			<th><%= link_to "編集", edit_blog_path(@blog.id), class: "btn btn-success" %></th>
+		      			<td><%= link_to "削除", blog_path, class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+	      			<% end %>
+	      		<% end %>
 			</tr>
 
 		</table>

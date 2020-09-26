@@ -34,7 +34,7 @@ class BlogsController < ApplicationController
     @count = Blog.where(genre: params[:genre]).count
   end
 
-# titleあいまい検索
+# 店名検索
   def search_title
     @blogs = Blog.search_title(params[:search_title]).page(params[:page]).per(8)
     @count = @blogs.count
@@ -45,26 +45,26 @@ class BlogsController < ApplicationController
   def create
   	@blog = Blog.new(blog_params)
   	@blog.customer_id = current_customer.id
-    	if @blog.save
-      		redirect_to blog_path(@blog)
-    	else
-      		render :new
-    	end
+  	if @blog.save
+    	redirect_to blog_path(@blog)
+  	else
+    	render :new
+  	end
   end
 
   def update
   	@blog = Blog.find(params[:id])
-  		if @blog.update(blog_params)
-  	   		redirect_to blog_path(@blog)
-    	else
-    		render :edit
-      end
+		if @blog.update(blog_params)
+	   	redirect_to blog_path(@blog)
+  	else
+  		render :edit
+    end
   end
 
   def destroy
   	blog = Blog.find(params[:id])
-  		blog.destroy
-  		redirect_to blogs_path
+		blog.destroy
+		redirect_to blogs_path
   end
 
 

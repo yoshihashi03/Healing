@@ -3,18 +3,18 @@
       <div class="flex-blog-content">
 
       	<% if blog.blog_images.present? %>
-      		<div class="b">
+      		<div class="index-slider">
 				<% blog.blog_images.each do |image| %>
-					<%= attachment_image_tag image, :photo, class: "blog-photo-index" %>
+					<%= attachment_image_tag image, :photo, class: "blog-index-photo" %>
 				<% end %>
 			</div>
 		<% else %>
-			 <%= image_tag 'IMG_2667_2.jpg', class: "blog-photo-index" %>
+			 <%= image_tag 'IMG_2667_2.jpg', class: "blog-index-photo" %>
 		<% end %>
 
 		<%= link_to blog_path(blog) do %>
-			<div class="index-blog-title"><%= blog.title %></div>
-		    <div class="index-blog-address"><%= strip_tags(blog.address).truncate(8) %></div>
+			<div class="blog-title"><%= blog.title %></div>
+		    <div><%= strip_tags(blog.address).truncate(8) %></div>
 		<% end %>
       </div>
 <% end %>

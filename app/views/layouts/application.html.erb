@@ -5,23 +5,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://kit.fontawesome.com/9c7333a45d.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
   </head>
 
   <body>
     <%= render 'layouts/header' %>
       <%= yield %>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+      <div id="page_top"><a href="#"></a></div>
   </body>
 </html>

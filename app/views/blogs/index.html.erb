@@ -2,18 +2,18 @@
 	<div class="container">
 		<div class="row">
 
-			<h2 class="index-title">投稿一覧 (全<%= @count %>件・新着順)</h2>
+			<h2 class="blog-index-title">投稿一覧 (全<%= @count %>件・新着順)</h2>
 
 			<div class="search-title">
 			 	<%= form_tag(blogs_search_title_path, :method => 'get') do %>
 			    	<%= text_field_tag :search_title %>
-			    	<%= submit_tag '店名検索', class: 'search-title-bt' %>
+			    	<%= submit_tag '店名検索' %>
 			  	<% end %>
 			</div>
 
 				<div class="search-var-style"><%= render 'search' %></div><!-- 検索パネル -->
 				<% if customer_signed_in? %>
-					<div class="blog-index-newbt"><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-info' %></div>
+					<div><%= link_to " 新規投稿", new_blog_path, class: 'btn btn-info' %></div>
 				<% end %>
 
 			    <div class="flex-blog">

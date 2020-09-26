@@ -19,13 +19,13 @@
 
 
 $(function() {
-    $('.a').slick({
+    $('.show-slider').slick({
         dots: true,
         fade: true,
         autoplay: true,
         autoplaySpeed: 5000,
     });
-    $('.b').slick({
+    $('.index-slider').slick({
         dots: true,
         fade: true,
     });
@@ -36,9 +36,12 @@ $(function() {
           alert('画像ファイルは3枚以内で投稿して下さい')
           $('input[type=file]').val('');
 
-    }
-  });
+        }
+    });
+
 });
+
+
 
 
 
