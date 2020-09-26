@@ -1,3 +1,33 @@
 // Place all the styles related to the BlogComments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.table-scroll {
+	overflow-x : scroll;
+	margin: 0 3%;
+}
+
+.table-scroll-comment {
+	overflow-x : scroll;
+	margin: 0 3%;
+	width: 600px;
+	font-family: '昔々ふぉんと';
+}
+
+.comment-form {
+	margin: 0 3%;
+	font-family: '昔々ふぉんと';
+}
+
+.blog-show-comment {
+	width: 100%;
+}
+
+.comment-deletebt {
+	color: red;
+}
+
+.blog-show-comment-customer {
+	font-size: 10px;
+}

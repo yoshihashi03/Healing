@@ -153,16 +153,16 @@ ul {
 
   .top-font-style {
     text-align: center;
-    font-size: 18px;
-    color: blue;
+    font-size: 10px;
+    color: #33ffff;
     font-family: '昔々ふぉんと';
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
   }
 
   .about-img {
     width: 100%;
     height: 100vh;
-    background-image: image-url("t-r-photography-TzjMd7i5WQI-unsplash.jpg");
+    background-image: image-url("clyde-rs-4XbZCfU2Uoo-unsplash.jpg");
     background-size: 100% 100%;
   }
 
@@ -172,11 +172,16 @@ ul {
 
   .about-content {
     font-size: 10px;
+    color: green;
   }
 
   .about-use {
-    font-size: 10px;
+    font-size: 20px;
   }
+
+  .blog-index-title {
+  font-size: 20px;
+}
 
   .table-scroll-comment {
     width: 300px;

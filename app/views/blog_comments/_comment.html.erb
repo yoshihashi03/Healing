@@ -3,12 +3,12 @@
 	<thead>
 		<strong>コメント一覧(<%= count %>件)</strong>
 	</thead>
-	<tbody class="">
+	<tbody>
   		<% blog_comments.each do |blog_comment| %>
 	        <tr>
 	          <td class="blog-show-comment-customer">
 	            <%= link_to customer_path(blog_comment.customer), class: "customer_#{blog_comment.customer.id}", remote: true do %>
-	              <%= attachment_image_tag blog_comment.customer, :profile_image, size: "30x30", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash",class: "profile-image-style" %>
+	              <%= attachment_image_tag blog_comment.customer, :profile_image, size: "40x40", fallback: "hans-jurgen-mager-Fbdr6gXJBVY-unsplash",class: "profile-image-style" %>
 	              <%= blog_comment.customer.name %>
 	            <% end %>
 	          </td>
