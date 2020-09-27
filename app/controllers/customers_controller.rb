@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
 	 before_action :authenticate_customer!
 
   def index
-  	@customers = Customer.all.page(params[:page]).per(6)
+    @customers = Customer.all.where(is_deleted: false).where(admin: false).reverse_order.page(params[:page]).per(6)
     @customer = current_customer
   end
 

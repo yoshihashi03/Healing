@@ -28,7 +28,7 @@
 
 			<!-- ログイン者だったら表示 -->
 			<% if @customer == current_customer %>
-				<div class="favorite-byn">
+				<div>
 					<%= link_to "お気に入り一覧", customers_favorite_path, class: "btn btn-danger" %>
 				</div>
 			<% end %>

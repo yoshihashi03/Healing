@@ -85,7 +85,7 @@
 		     	<div class="comment-form">コメント記入欄(50字以内)
 			      	<%= form_with model: [@blog, @blog_comment], data: {remote: true} do |f| %>
 		    	    	<%= f.text_area :comment, size: "30x4" %>
-		        		<%= f.submit 'コメント投稿', class: "btn btn-info" %>
+		        		<p><%= f.submit 'コメント投稿', class: "btn btn-info" %></p>
 		      		<% end %>
 		    	</div>
 			<% end %>

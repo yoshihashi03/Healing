@@ -52,8 +52,10 @@
 				         <div class="submit-btn">
 				         <div class="panel-body">
 				            <% if customer_signed_in? %>
+				            	<!-- 管理者ではなく、かつログイン者のアカウントであれば表示 -->
 				        		<% if current_customer.admin == false && @customer.id == current_customer.id %>
 				        			<%= link_to "退会", customers_hide_path(@customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+				        		<!-- 管理者であり、かつ管理者以外のアカウントに表示 -->
 				        		<% elsif current_customer.admin != false && @customer.id != current_customer.id %>
 				        			<%= link_to "強制退会", customers_hide_path(@customer), method: :put, "data-confirm" => "本当に退会させますか？", class: "btn btn-danger" %>
 
