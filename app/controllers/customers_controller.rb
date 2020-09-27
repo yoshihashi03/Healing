@@ -32,6 +32,7 @@ class CustomersController < ApplicationController
       @customer = Customer.find(params[:id])
       @blogs = @customer.blogs
       @favorites = Blog.where(id: blog_id = Favorite.where(customer_id: current_customer.id).select(:blog_id)).all.page(params[:page]).per(8)
+      @count = Blog.where(id: blog_id = Favorite.where(customer_id: current_customer.id).select(:blog_id)).all.count
    end
 
   def hide

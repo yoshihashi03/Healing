@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<!-- ログイン者のお気に入り一覧画面 -->
-			<div class="favorite-index-title">お気に入り (<%= @favorites.count %>件)</div>
+			<div class="favorite-index-title">お気に入り (<%= @count %>件)</div>
 
 			<div class="flex-blog">
 				<% @favorites.each do |favorite| %>
@@ -14,7 +14,7 @@
 								<% end %>
 							</div>
 						<% else %>
-							<%= image_tag 'IMG_2667 2.jpeg', class: "blog-index-photo" %>
+							<%= image_tag 'IMG_2667_2.jpg', class: "blog-index-photo" %>
 						<% end %>
 
 						<%= link_to blog_path(favorite) do %>
